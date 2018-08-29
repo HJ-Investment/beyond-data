@@ -8,7 +8,6 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
-          <!-- <p class="login-tip">ddd</p> -->
         </div>
       </Card>
     </div>

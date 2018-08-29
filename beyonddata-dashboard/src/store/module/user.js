@@ -36,8 +36,10 @@ export default {
           userName,
           password
         }).then(res => {
+          console.log(res)
           const data = res.data
-          commit('setToken', data.token)
+          console.log(data.auth_token)
+          commit('setToken', data.auth_token)
           resolve()
         }).catch(err => {
           reject(err)
@@ -65,10 +67,11 @@ export default {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(res => {
           const data = res.data
-          commit('setAvator', data.avator)
-          commit('setUserName', data.user_name)
-          commit('setUserId', data.user_id)
-          commit('setAccess', data.access)
+          console.log(data)
+          // commit('setAvator', data.avator)
+          commit('setUserName', data.username)
+          commit('setUserId', data.id)
+          commit('setAccess', data.is_superuser)
           resolve(data)
         }).catch(err => {
           reject(err)

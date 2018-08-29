@@ -2,11 +2,11 @@ import axios from '@/libs/api.request'
 
 export const login = ({ userName, password }) => {
   const data = {
-    userName,
-    password
+    username: userName,
+    password: password
   }
   return axios.request({
-    url: 'login',
+    url: 'http://45.76.77.76:9900/auth/token/create/',
     data,
     method: 'post'
   })
@@ -14,17 +14,17 @@ export const login = ({ userName, password }) => {
 
 export const getUserInfo = (token) => {
   return axios.request({
-    url: 'get_info',
-    params: {
-      token
-    },
+    url: 'http://45.76.77.76:9900/auth/me',
+    // headers: {
+    //   Authorization: 'Token ' + token
+    // },
     method: 'get'
   })
 }
 
 export const logout = (token) => {
   return axios.request({
-    url: 'logout',
+    url: 'http://45.76.77.76:9900/auth/token/destroy/',
     method: 'post'
   })
 }

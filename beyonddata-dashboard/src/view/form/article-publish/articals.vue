@@ -1,6 +1,6 @@
-<style lang="less" scoped>
+<!-- <style lang="less" scoped>
     @import '../../../styles/common.less';
-</style>
+</style> -->
 
 <template>
     <div>

@@ -77,51 +77,51 @@ export default [
   //   },
   //   component: Main,
   //   children: [
-  //     {
-  //       path: 'count_to_page',
-  //       name: 'count_to_page',
-  //       meta: {
-  //         icon: 'md-trending-up',
-  //         title: '数字渐变'
-  //       },
-  //       component: () => import('@/view/components/count-to/count-to.vue')
-  //     },
-  //     {
-  //       path: 'tables_page',
-  //       name: 'tables_page',
-  //       meta: {
-  //         icon: 'md-grid',
-  //         title: '多功能表格'
-  //       },
-  //       component: () => import('@/view/components/tables/tables.vue')
-  //     },
-  //     {
-  //       path: 'split_pane_page',
-  //       name: 'split_pane_page',
-  //       meta: {
-  //         icon: 'md-pause',
-  //         title: '分割窗口'
-  //       },
-  //       component: () => import('@/view/components/split-pane/split-pane.vue')
-  //     },
-  //     {
-  //       path: 'markdown_page',
-  //       name: 'markdown_page',
-  //       meta: {
-  //         icon: 'logo-markdown',
-  //         title: 'Markdown编辑器'
-  //       },
-  //       component: () => import('@/view/components/markdown/markdown.vue')
-  //     },
-  //     {
-  //       path: 'editor_page',
-  //       name: 'editor_page',
-  //       meta: {
-  //         icon: 'ios-create',
-  //         title: '富文本编辑器'
-  //       },
-  //       component: () => import('@/view/components/editor/editor.vue')
-  //     },
+      // {
+      //   path: 'count_to_page',
+      //   name: 'count_to_page',
+      //   meta: {
+      //     icon: 'md-trending-up',
+      //     title: '数字渐变'
+      //   },
+      //   component: () => import('@/view/components/count-to/count-to.vue')
+      // },
+      // {
+      //   path: 'tables_page',
+      //   name: 'tables_page',
+      //   meta: {
+      //     icon: 'md-grid',
+      //     title: '多功能表格'
+      //   },
+      //   component: () => import('@/view/components/tables/tables.vue')
+      // },
+      // {
+      //   path: 'split_pane_page',
+      //   name: 'split_pane_page',
+      //   meta: {
+      //     icon: 'md-pause',
+      //     title: '分割窗口'
+      //   },
+      //   component: () => import('@/view/components/split-pane/split-pane.vue')
+      // },
+      // {
+      //   path: 'markdown_page',
+      //   name: 'markdown_page',
+      //   meta: {
+      //     icon: 'logo-markdown',
+      //     title: 'Markdown编辑器'
+      //   },
+      //   component: () => import('@/view/components/markdown/markdown.vue')
+      // },
+      // {
+      //   path: 'editor_page',
+      //   name: 'editor_page',
+      //   meta: {
+      //     icon: 'ios-create',
+      //     title: '富文本编辑器'
+      //   },
+      //   component: () => import('@/view/components/editor/editor.vue')
+      // },
   //     {
   //       path: 'icons_page',
   //       name: 'icons_page',
@@ -334,39 +334,93 @@ export default [
   // }
   {
     path: '/tables',
-    icon: 'ios-grid-view',
     name: '数据一览',
-    title: '数据一览',
+    meta: {
+      icon: 'md-grid',
+      title: '数据一览'
+    },
     component: Main,
     children: [
       // { path: 'dragableTable', title: '可拖拽排序', name: 'dragableTable', icon: 'arrow-move', component: resolve => { require(['./views/tables/dragable-table.vue'], resolve); } },
       // { path: 'editableTable', title: '可编辑表格', name: 'editableTable', icon: 'edit', component: resolve => { require(['./views/tables/editable-table.vue'], resolve); } },
-      { path: 'eastmoney', title: '东方财富板块涨跌Top10', name: '东方财富板块涨跌Top10', icon: 'ios-pulse-strong', component: resolve => { require(['@/view/tables/exportable-table.vue'], resolve); } },
-      { path: '10jqka', title: '同花顺行业一览表Top10', name: '同花顺行业一览表Top10', icon: 'ios-pulse-strong', component: resolve => { require(['@/view/tables/jqka-table.vue'], resolve); } }
+      { 
+        path: 'eastmoney', 
+        name: '东方财富板块涨跌Top10', 
+        meta: {
+          icon: 'md-list',
+          title: '东方财富板块涨跌Top10'
+        },
+        component: resolve => { require(['@/view/tables/exportable-table.vue'], resolve); } 
+      },
+      { 
+        path: '10jqka', 
+        name: '同花顺行业一览表Top10', 
+        meta: {
+          icon: 'md-list',
+          title: '同花顺行业一览表Top10'
+        },
+        component: resolve => { require(['@/view/tables/jqka-table.vue'], resolve); } 
+      }
       // { path: 'table2image', title: '表格转图片', name: 'table2image', icon: 'images', component: resolve => { require(['./views/tables/table-to-image.vue'], resolve); } }
     ]
   },
   {
     path: '/charts',
-    icon: 'arrow-graph-up-right',
     name: '数据分析',
-    title: '数据分析',
+    meta: {
+      icon: 'md-analytics',
+      title: '数据分析'
+    },
     component: Main,
     children: [
-      { path: 'eastmoney-charts', title: '东方财富板块涨跌分析', name: '东方财富板块涨跌分析', icon: 'stats-bars', component: resolve => { require(['@/view/charts/eastmoney-charts.vue'], resolve); } },
-      { path: 'jqka-charts', title: '同花顺行业涨跌分析', name: '同花顺行业涨跌分析', icon: 'stats-bars', component: resolve => { require(['@/view/charts/jqka-charts.vue'], resolve); } }
+      { 
+        path: 'eastmoney-charts', 
+        name: '东方财富板块涨跌分析', 
+        meta: {
+          icon: 'md-trending-up',
+          title: '东方财富板块涨跌分析'
+        },
+        component: resolve => { require(['@/view/charts/eastmoney-charts.vue'], resolve); } 
+      },
+      { 
+        path: 'jqka-charts', 
+        name: '同花顺行业涨跌分析', 
+        meta: {
+          icon: 'md-trending-up',
+          title: '同花顺行业涨跌分析'
+        }, 
+        component: resolve => { require(['@/view/charts/jqka-charts.vue'], resolve); } 
+      }
     ]
   },
-  // {
-  //     path: '/form',
-  //     icon: 'edit',
-  //     name: 'form',
-  //     title: '编辑区',
-  //     access: 0,
-  //     component: Main,
-  //     children: [
-  //       { path: 'articals', title: '我的文章', name: 'articals', icon: 'arrow-swap', component: resolve => { require(['@/view/form/article-publish/articals.vue'], resolve); } },
-  //         { path: 'artical-publish', title: '新建文章', name: 'articalpublish', icon: 'compose', component: resolve => { require(['@/view/form/article-publish/article-publish.vue'], resolve); } },
-  //     ]
-  // }
+  {
+      path: '/form',
+      name: 'form',
+      meta: {
+        icon: 'ios-brush',
+        title: '编辑区'
+      },
+      access: 0,
+      component: Main,
+      children: [
+        { 
+          path: 'articals', 
+          name: '我的文章', 
+          meta: {
+            icon: 'ios-albums',
+            title: '我的文章'
+          }, 
+          component: resolve => { require(['@/view/form/article-publish/articals.vue'], resolve); } 
+        },
+        { 
+          path: 'artical-publish', 
+          name: '新建文章', 
+          meta: {
+            icon: 'ios-create',
+            title: '新建文章'
+          }, 
+          component: resolve => { require(['@/view/form/article-publish/article-publish-new.vue'], resolve); } 
+        },
+      ]
+  }
 ]

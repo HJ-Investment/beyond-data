@@ -296,3 +296,7 @@ export const routeHasExist = (tagNavList, routeItem) => {
   })
   return res
 }
+
+export const formatDate = (date, format) => {
+  return new Date()
+}

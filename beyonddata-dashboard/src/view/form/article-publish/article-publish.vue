@@ -1,5 +1,4 @@
 <style lang="less">
-    @import '../../../styles/common.less';
     @import './article-publish.less';
 </style>
 
@@ -43,7 +42,7 @@
                             <Option v-for="item in articleStateList" :value="item.value" :key="item.value">{{ item.value }}</Option>
                         </Select>
                     </p> -->
-                    <p class="margin-top-10">
+                    <!-- <p class="margin-top-10">
                         <Icon type="eye"></Icon>&nbsp;&nbsp;公开度：&nbsp;<b>{{ Openness }}</b>
                         <Button v-show="!editOpenness" size="small" @click="handleEditOpenness" type="text">修改</Button>
                         <transition name="openness-con">
@@ -53,10 +52,10 @@
                                         公开
                                         <Checkbox v-show="currentOpenness === '公开'" v-model="topArticle">在首页置顶这篇文章</Checkbox>
                                     </Radio>
-                                    <!-- <Radio label="密码">
+                                    <Radio label="密码">
                                         密码
                                         <Input v-show="currentOpenness === '密码'" style="width:120px" size="small" placeholder="请输入密码"/>
-                                    </Radio> -->
+                                    </Radio>
                                     <Radio label="私密"></Radio>
                                 </RadioGroup>
                                 <div>
@@ -65,7 +64,7 @@
                                 </div>
                             </div>
                         </transition>
-                    </p>
+                    </p> -->
                     <!-- <p class="margin-top-10">
                         <Icon type="ios-calendar-outline"></Icon>&nbsp;&nbsp;
                         <span v-if="publishTimeType === 'immediately'">立即发布</span><span v-else>定时：{{ publishTime }}</span>
@@ -82,18 +81,18 @@
                             </div>
                         </transition>
                     </p> -->
-                    <Row class="margin-top-20 publish-button-con">
-                        <span class="publish-button"><Button @click="handlePreview">预览</Button></span>
-                        <span class="publish-button"><Button @click="handleSaveDraft">保存草稿</Button></span>
+                    <Row>
+                        <!-- <span class="publish-button"><Button @click="handlePreview">预览</Button></span>
+                        <span class="publish-button"><Button @click="handleSaveDraft">保存草稿</Button></span> -->
                         <span class="publish-button"><Button @click="handlePublish" :loading="publishLoading" icon="ios-checkmark" style="width:90px;" type="primary">发布</Button></span>
                     </Row>
                 </Card>
-                <div class="margin-top-10">
-                    <Card>
-                        <p slot="title">
+                <!-- <div class="margin-top-10">
+                    <Card> -->
+                        <!-- <p slot="title">
                             <Icon type="navicon-round"></Icon>
                             分类目录
-                        </p>
+                        </p> -->
                         <!-- <Tabs type="card"> -->
                             <!-- <TabPane label="所有分类目录">
                                 <div class="classification-con">
@@ -102,17 +101,17 @@
                             </TabPane> -->
                             <!-- <TabPane label="分类目录">
                                 <div class="classification-con"> -->
-                                    <RadioGroup v-model="offenUsedClassSelected" @on-change="setClassificationInOffen">
+                                    <!-- <RadioGroup v-model="offenUsedClassSelected" @on-change="setClassificationInOffen">
                                         <p v-for="item in offenUsedClass" :key="item.classification">
                                             <Radio :label="item.classification">{{ item.classification }}</Radio>
                                         </p>
-                                    </RadioGroup>
+                                    </RadioGroup> -->
                                 <!-- </div>
                             </TabPane> -->
                         <!-- </Tabs> -->
-                    </Card>
-                </div>
-                <div class="margin-top-10">
+                    <!-- Card>
+                </div> -->
+                <!-- <div class="margin-top-10">
                     <Card>
                         <p slot="title">
                             <Icon type="ios-pricetags-outline"></Icon>
@@ -142,7 +141,7 @@
                             </div>
                         </transition>
                     </Card>
-                </div>
+                </div> -->
             </Col>
         </Row>
     </div>
@@ -150,7 +149,7 @@
 
 <script>
 import tinymce from 'tinymce';
-import util from '@/libs/util.js';
+import { formatDate } from '@/libs/util';
 export default {
     data () {
         return {
@@ -185,15 +184,15 @@ export default {
         };
     },
     created () {        
-        this.$http.get('http://45.76.77.76:9900/classifications/').then(function (data) {
-            console.log(1)
-            data = data.body;
-            console.log(data)
-            this.offenUsedClass = data
-        }, function (response) {
-            console.log(2)
-            console.log(response.status)
-        });
+        // this.$http.get('http://45.76.77.76:9900/classifications/').then(function (data) {
+        //     console.log(1)
+        //     data = data.body;
+        //     console.log(data)
+        //     this.offenUsedClass = data
+        // }, function (response) {
+        //     console.log(2)
+        //     console.log(response.status)
+        // });
     },
     methods: {
         handleArticletitleBlur () {
@@ -306,7 +305,7 @@ export default {
             }
         },
         preparePublish () {
-            var time = util.formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss')
+            var time = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss')
             this.articelBody = {article_title: this.articleTitle,
                         content: tinymce.activeEditor.getContent(),
                         classification: null,
@@ -453,14 +452,14 @@ export default {
             language: 'zh_CN.GB2312',
             menubar: 'edit insert view format table tools',
             theme: 'modern',
-            plugins: [
-                'advlist autolink lists link image charmap print preview hr anchor pagebreak imagetools',
-                'searchreplace visualblocks visualchars code fullscreen fullpage',
-                'insertdatetime media nonbreaking save table contextmenu directionality',
-                'emoticons paste textcolor colorpicker textpattern imagetools codesample'
-            ],
-            toolbar1: ' newnote print fullscreen preview | undo redo | insert | styleselect | forecolor backcolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image emoticons media codesample',
-            autosave_interval: '20s',
+            // plugins: [
+            //     'advlist autolink lists link image charmap print preview hr anchor pagebreak imagetools',
+            //     'searchreplace visualblocks visualchars code fullscreen fullpage',
+            //     'insertdatetime media nonbreaking save table contextmenu directionality',
+            //     'emoticons paste textcolor colorpicker textpattern imagetools codesample'
+            // ],
+            // toolbar1: ' newnote print fullscreen preview | undo redo | insert | styleselect | forecolor backcolor bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image emoticons media codesample',
+            // autosave_interval: '20s',
             image_advtab: true,
             table_default_styles: {
                 width: '100%',
